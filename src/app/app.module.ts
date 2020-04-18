@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { TwitterSearchComponent } from './twitter-search/twitter-search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppConfigModule } from './app-config.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppConfigModule
   ],
   providers: [],
   bootstrap: [AppComponent]

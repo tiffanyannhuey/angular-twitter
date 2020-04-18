@@ -21,4 +21,8 @@ export class TwitterSearchComponent implements OnInit {
     })
   }
 
+  submitForm(): void {
+    console.log('clicked');
+  }
+
 }
