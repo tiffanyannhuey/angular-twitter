@@ -6,6 +6,8 @@ import { TwitterSearchComponent } from './twitter-search/twitter-search.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppConfigModule } from './app-config.module';
+import { SearchTweetsService } from './services/search-tweets.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,10 @@ import { AppConfigModule } from './app-config.module';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AppConfigModule
+    AppConfigModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [SearchTweetsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

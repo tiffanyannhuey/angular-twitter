@@ -1,9 +1,13 @@
-<p>
-  twitter-search works!
-</p>
 <h1>What's on your mind today?</h1>
 <form [formGroup]="twitterForm">
-  <input type="text" placeholder="type hashtag here" formControlName="query">
+  <input #hashtag type="text" placeholder="type hashtag here" formControlName="query">
   I'm looking for {{twitterForm.value | json }}
-  <input type="submit" value="Find Tweets" (click)="submitForm()">
+  <input type="submit" value="Find Tweets" (click)="submitForm(twitterForm.value)">
 </form>
+
+<section *ngFor="let tweet of tweetlist">
+  <div>
+    <p><strong>{{tweet.text}}</strong></p>
+    <p>{{tweet.user.name}}</p>
+  </div>
+</section>
