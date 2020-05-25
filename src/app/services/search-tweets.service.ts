@@ -18,10 +18,8 @@ export class SearchTweetsService {
   ) { }
 
   public search ( query: string ) {
-    console.log(this.config.apiEndpoint + 'tweets', query )
-    const tweetUrl = this.config.apiEndpoint + 'tweets';
+    const tweetUrl = this.config.apiEndpoint + 'tweets/' + query;
     this.http.get<any>(tweetUrl).subscribe(response => {
-      console.log(response)
       this.tweets.next(response.data.statuses);
     });
     

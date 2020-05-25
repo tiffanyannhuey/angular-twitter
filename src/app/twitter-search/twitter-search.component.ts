@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { takeWhile } from 'rxjs/operators';
 
 import { SearchTweetsService } from '../services/search-tweets.service';
 
@@ -13,6 +14,7 @@ export class TwitterSearchComponent implements OnInit {
 
   twitterForm: FormGroup;
   public tweetlist: any[];
+  subscribe: boolean = true;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -24,12 +26,15 @@ export class TwitterSearchComponent implements OnInit {
       query: ''
     })
 
-    this._searchService.tweets.subscribe(data => {
+    this._searchService.tweets.pipe(takeWhile( () => this.subscribe )).subscribe(data => {
       if (data && data.length > 0) {
-        console.log('what is this', data);
         this.tweetlist = data;
       }
     })
+  }
+
+  ngOnDestroy() {
+    this.subscribe = false;
   }
 
   submitForm( text: string ): void {

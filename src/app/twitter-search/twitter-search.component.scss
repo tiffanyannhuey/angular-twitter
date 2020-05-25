@@ -1,0 +1,57 @@
+body {
+    background-color: #63a4ff;
+    background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
+}
+
+.twitter-form {
+    text-align: center;
+    margin: 3em 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+
+    [class^="tweet"] {
+        border: 2px solid blue;
+        box-sizing: border-box;
+        color: #0580d5;
+        transition: .2s;
+        background: lightblue;
+        padding: 1rem;
+
+        & a {
+            color: inherit;
+            font-weight: normal;
+            text-decoration: none;
+        }
+    }    
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+
+        [class^="tweet"]:hover {
+            z-index:2; /*we increase the z-index to cover the other*/
+            background:
+              /*we this to keep the initial background*/
+              linear-gradient(rgba(40, 180, 240, .3),rgba(40, 180, 240, .3)),
+              #fff;
+          }
+          
+          [class^="tweet"]:nth-child(3n + 1):hover {
+            margin-right:calc(-200% - 20px); /* we remove (2 x grid tweets + 2 x gap) */
+          }
+          [class^="tweet"]:nth-child(3n + 2):hover {
+            margin-left:calc(-100% - 10px);
+            margin-right:calc(-100% - 10px);
+          }
+          [class^="tweet"]:nth-child(3n + 3):hover {
+            margin-left:calc(-200% - 20px);
+          }
+    }
+
+}
+
